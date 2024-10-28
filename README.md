@@ -8,3 +8,6 @@ Python : 3.12.6
 
 `pip install -r requirements.txt`
 
+- Install React dependencies
+`cd frontend`
+`npm install`
