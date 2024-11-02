@@ -1,15 +1,21 @@
 # views.py
-from rest_framework.decorators import api_view
+from rest_framework.decorators import api_view, permission_classes
+from rest_framework.permissions import AllowAny
 from rest_framework.response import Response
 from rest_framework import status
 import base64
 from io import BytesIO
 from PIL import Image
 
+
+
+
 @api_view(['POST'])
+@permission_classes([AllowAny])
 def receive_frame(request):
     try:
         # Get the image data and language from the request
+        print('IMAGE')
         image_data = request.data.get('image')
         language = request.data.get('language')
 
