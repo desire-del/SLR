@@ -94,9 +94,9 @@ function App() {
             className={`action-button ${webcamActive ? 'active' : ''}`}
             onClick={() => webcamActive ? stopWebcam() : startWebcam()}
           >
-            {webcamActive ? 'Arrêter' : 'Webcam'}
+            {webcamActive ? 'Stop' : 'Webcam'}
           </button>
-          <button className="action-button">Télécharger</button>
+          <button className="action-button">Upload</button>
         </div>
       </header>
       
@@ -136,7 +136,7 @@ function App() {
       </main>
 
       <footer className="footer">
-        <p>Envoyer des commentaires</p>
+        <p>Send a comment</p>
       </footer>
     </div>
   );
