@@ -5,6 +5,8 @@ function App() {
   const [selectedLang, setSelectedLang] = useState('English');
   const [webcamActive, setWebcamActive] = useState(false);
   const videoRef = useRef(null);
+  const canvasRef = useRef(null);
+  const [sending, setSending] = useState(false);
 
   const startWebcam = async () => {
     try {
@@ -34,6 +36,49 @@ function App() {
     }
   };
 
+  // Capture and send video frames to backend
+  const sendFrameToBackend = async () => {
+    if (!sending && videoRef.current && canvasRef.current) {
+      const canvas = canvasRef.current;
+      const context = canvas.getContext('2d');
+
+      // Set canvas size equal to the video
+      canvas.width = videoRef.current.videoWidth;
+      canvas.height = videoRef.current.videoHeight;
+
+      // Draw the video frame on the canvas
+      context.drawImage(videoRef.current, 0, 0, canvas.width, canvas.height);
+
+      // Convert the canvas content to a base64 image
+      const dataURL = canvas.toDataURL('image/jpeg');
+
+      // Send the frame to the backend
+      setSending(true);
+      try {
+        await fetch('http://127.0.0.1:8000/api/video-frame/', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({ image: dataURL, language: selectedLang }),
+        });
+      } catch (error) {
+        console.error("Erreur lors de l'envoi de la vidéo au serveur:", error);
+      } finally {
+        setSending(false);
+      }
+    }
+  };
+
+  // Start sending frames at regular intervals
+  useEffect(() => {
+    let frameInterval;
+    if (webcamActive) {
+      frameInterval = setInterval(sendFrameToBackend, 1000); // Send frame every second
+    }
+    return () => clearInterval(frameInterval);
+  }, [webcamActive]);
+
   useEffect(() => {
     return () => {
       stopWebcam();
@@ -56,7 +101,7 @@ function App() {
       </header>
       
       <div className="language-selector">
-        {['English', 'Bambara','Arab', 'Weve', 'French'].map((lang) => (
+        {['English', 'Bambara', 'Arab', 'E', 'French'].map((lang) => (
           <button 
             key={lang}
             className={`language-button ${selectedLang === lang ? 'selected' : ''}`}
@@ -81,6 +126,7 @@ function App() {
             </div>
           )}
         </div>
+        <canvas ref={canvasRef} style={{ display: 'none' }}></canvas> {/* Hidden canvas for capturing frames */}
         <div className="translation-box">
           <p className="translation-text">The translation will be paste here !!!!</p>
           <div className="sign-icons">
