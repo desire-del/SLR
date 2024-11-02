@@ -56,7 +56,7 @@ function App() {
       </header>
       
       <div className="language-selector">
-        {['English', 'Bambara','Arab', 'Hévé', 'French'].map((lang) => (
+        {['English', 'Bambara','Arab', 'Weve', 'French'].map((lang) => (
           <button 
             key={lang}
             className={`language-button ${selectedLang === lang ? 'selected' : ''}`}
