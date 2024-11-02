@@ -104,6 +104,9 @@
   object-fit: cover;
   display: block;
   background-color: #000;
+  transform: scaleX(-1);
+  -webkit-transform: scaleX(-1); /* Pour la compatibilité Safari */
+  filter: FlipH; /* Pour la compatibilité IE */
 }
 
 .video-container {
