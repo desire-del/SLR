@@ -12,6 +12,14 @@ function App() {
   // Fonction pour démarrer la webcam
   const startWebcam = async () => {
     try {
+      // Arrêter la vidéo téléversée si elle existe
+      if (uploadedVideo) {
+        setUploadedVideo(null);
+        if (videoRef.current) {
+          videoRef.current.src = '';
+        }
+      }
+
       const stream = await navigator.mediaDevices.getUserMedia({ 
         video: {
           width: { ideal: 1280 },
@@ -22,7 +30,6 @@ function App() {
       if (videoRef.current) {
         videoRef.current.srcObject = stream;
         setWebcamActive(true);
-        setUploadedVideo(null); // Désactive la vidéo téléchargée si la webcam est active
       }
     } catch (err) {
       console.error("Erreur d'accès à la webcam:", err);
@@ -44,12 +51,14 @@ function App() {
   const handleVideoUpload = (event) => {
     const file = event.target.files[0];
     if (file) {
+      // Arrêter la webcam si elle est active
+      stopWebcam();
+      
       const fileURL = URL.createObjectURL(file);
       setUploadedVideo(fileURL);
-      setWebcamActive(false); // Arrête la webcam si une vidéo est téléchargée
       if (videoRef.current) {
-        videoRef.current.srcObject = null; // Efface le flux de la webcam
-        videoRef.current.src = fileURL; // Définit la vidéo téléchargée comme source
+        videoRef.current.srcObject = null;
+        videoRef.current.src = fileURL;
       }
     }
   };
@@ -60,17 +69,24 @@ function App() {
       const canvas = canvasRef.current;
       const context = canvas.getContext('2d');
 
-      // Définir la taille du canvas en fonction de la vidéo
       canvas.width = videoRef.current.videoWidth;
       canvas.height = videoRef.current.videoHeight;
 
-      // Dessiner la frame vidéo sur le canvas
+      if (webcamActive) {
+        // Pour la webcam, nous devons inverser l'image avant de l'envoyer
+        context.scale(-1, 1);
+        context.translate(-canvas.width, 0);
+      }
+      
       context.drawImage(videoRef.current, 0, 0, canvas.width, canvas.height);
 
-      // Convertir le contenu du canvas en image base64
+      // Réinitialiser la transformation pour la prochaine frame
+      if (webcamActive) {
+        context.setTransform(1, 0, 0, 1, 0, 0);
+      }
+
       const dataURL = canvas.toDataURL('image/jpeg');
 
-      // Envoyer la frame au backend
       setSending(true);
       try {
         await fetch('http://127.0.0.1:8000/api/video-frame/', {
@@ -88,11 +104,10 @@ function App() {
     }
   };
 
-  // Début de l'envoi des frames à intervalles réguliers
   useEffect(() => {
     let frameInterval;
     if (webcamActive || uploadedVideo) {
-      frameInterval = setInterval(sendFrameToBackend, 1000); // Envoie une frame toutes les secondes
+      frameInterval = setInterval(sendFrameToBackend, 1000);
     }
     return () => clearInterval(frameInterval);
   }, [webcamActive, uploadedVideo]);
@@ -144,8 +159,8 @@ function App() {
             ref={videoRef}
             autoPlay
             playsInline
-            controls={!webcamActive} // Affiche les contrôles seulement pour la vidéo téléchargée
-            className="webcam-video"
+            controls={!webcamActive}
+            className={`webcam-video ${webcamActive ? 'mirror' : ''}`}
           />
           {!webcamActive && !uploadedVideo && (
             <div className="loading-message">
@@ -153,11 +168,10 @@ function App() {
             </div>
           )}
         </div>
-        <canvas ref={canvasRef} style={{ display: 'none' }}></canvas> {/* Canvas caché pour capturer les frames */}
+        <canvas ref={canvasRef} style={{ display: 'none' }}></canvas>
         <div className="translation-box">
           <p className="translation-text">The translation will be displayed here !!!!</p>
           <div className="sign-icons">
-            {/* Les icônes de signes peuvent être ajoutées ici */}
           </div>
         </div>
       </main>

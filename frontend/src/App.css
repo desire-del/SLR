@@ -104,9 +104,12 @@
   object-fit: cover;
   display: block;
   background-color: #000;
+}
+
+/* Nouvelle classe pour l'effet miroir uniquement pour la webcam */
+.webcam-video.mirror {
   transform: scaleX(-1);
-  -webkit-transform: scaleX(-1); /* Pour la compatibilité Safari */
-  filter: FlipH; /* Pour la compatibilité IE */
+  -webkit-transform: scaleX(-1);
 }
 
 .video-container {
@@ -159,4 +162,3 @@
     max-width: 100%;
   }
 }
-
