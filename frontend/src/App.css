@@ -204,3 +204,47 @@
   font-size: 0.9rem;
   color: #333;
 }
+
+/* Header Navigation */
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.header-content {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.about-link {
+  text-decoration: none;
+  color: #333;
+  font-weight: bold;
+  transition: color 0.3s ease;
+}
+
+.about-link:hover {
+  color: #0066cc;
+}
+
+/* About Us Page Styles */
+.about-us-page {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 2rem;
+}
+
+.page-header {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 2rem;
+}
+
+.back-link {
+  align-self: flex-start;
+  text-decoration: none;
+  color: #0066cc;
+  margin-bottom: 1rem;
+}

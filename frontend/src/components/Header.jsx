@@ -1,9 +1,15 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 function Header({ webcamActive, onWebcamToggle, onVideoUpload }) {
   return (
     <header className="header">
-      <h1>Sign Language Translator <span className="beta-symbol">α</span></h1>
+      <div className="header-content">
+        <h1>Sign Language Translator <span className="beta-symbol">α</span></h1>
+        <nav className="header-nav">
+          <Link to="/about" className="about-link">About Us</Link>
+        </nav>
+      </div>
       <div className="actions">
         <button 
           className={`action-button ${webcamActive ? 'active' : ''}`}
