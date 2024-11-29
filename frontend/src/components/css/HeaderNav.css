@@ -1,0 +1,44 @@
+/* Personnalisation de la navbar */
+.navbar-custom {
+    background-color: #343a40;  /* Couleur de fond sombre */
+    padding: 5px 5px;  /* Espacement interne */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);  /* Ombre légère pour un effet moderne */
+  }
+  
+  /* Style de la marque (Brand) */
+  .navbar-brand {
+    font-size: 1.5rem;  /* Augmenter la taille de la police */
+    font-weight: bold;
+    color: #f8f9fa;  /* Couleur claire pour la marque */
+    text-transform: uppercase;  /* Majuscules pour un effet moderne */
+  }
+  
+  .navbar-brand .beta-symbol {
+    color: #f39c12;  /* Couleur différente pour le symbole α */
+  }
+  
+  /* Liens de navigation */
+  .navbar-nav .nav-link {
+    font-size: 1.1rem;  /* Légèrement plus grand pour les liens */
+    color: #f8f9fa;  /* Couleur des liens */
+    padding: 10px 15px;  /* Espacement autour des liens */
+    transition: all 0.3s ease;  /* Transition douce pour l'effet au survol */
+  }
+  
+  .navbar-nav .nav-link:hover {
+    color: #f39c12;  /* Couleur dorée lors du survol */
+    background-color: #495057;  /* Fond sombre lors du survol */
+    border-radius: 5px;  /* Coins arrondis */
+  }
+  
+  /* Pour les petites écrans (mobile) */
+  @media (max-width: 991px) {
+    .navbar-custom {
+      padding: 10px 15px;
+    }
+  
+    .navbar-nav .nav-link {
+      font-size: 1rem;  /* Taille des liens réduite sur mobile */
+    }
+  }
+  
