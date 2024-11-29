@@ -1,16 +1,22 @@
-import React from 'react';
-import { Routes, Route } from 'react-router-dom';
+import React, { useState, useEffect, useCallback } from 'react';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import 'bootstrap/dist/css/bootstrap.min.css'; 
 import './App.css';
-
-import HomePage from './pages/HomePage';
-import AboutUsPage from './pages/AboutUsPage';
+import HeaderNav from './components/HeaderNav';
+import SignToTextPage from "./components/SignToTextPage"
+import AboutUs from './components/AboutUs';
 
 function App() {
   return (
-    <Routes>
-      <Route path="/" element={<HomePage />} />
-      <Route path="/about" element={<AboutUsPage />} />
-    </Routes>
+    <BrowserRouter>
+      <HeaderNav/>
+      <Routes>
+        <Route path="/signtotext" element={<SignToTextPage />}>
+        </Route>
+        <Route path="/about" element={<AboutUs />}>
+        </Route>
+      </Routes>
+    </BrowserRouter>
   );
 }
 

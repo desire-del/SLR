@@ -6,7 +6,8 @@ from rest_framework import status
 import base64
 from io import BytesIO
 from PIL import Image
-
+import cv2
+import numpy as np
 
 
 
@@ -26,12 +27,14 @@ def receive_frame(request):
         # Decode the base64 image
         image_data = image_data.split(',')[1]  # Remove the metadata part
         image_bytes = base64.b64decode(image_data)
-        image = Image.open(BytesIO(image_bytes))
+        image = Image.open(BytesIO(image_bytes)).convert("RGB")
 
         # You can save the image or process it as needed
         # For example, save to a file
         #image.save(f"received_image.jpg")
-        print(f"IMAGE RECEIVED :{image}")
+        image_cv = np.array(image)
+        print(f"IMAGE RECEIVED :{image_cv.shape}")
+        
         
 
         return Response({'message': 'Frame received successfully', 'language': language}, status=status.HTTP_200_OK)
