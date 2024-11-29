@@ -1,11 +1,11 @@
 import React, { useState, useEffect, useCallback } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css'; 
 
-import LanguageSelector from './LanguageSelector';
-import VideoPlayer from './VideoPlayer';
-import TranslationBox from './TranslationBox';
+import LanguageSelector from '../LanguageSelector';
+import VideoPlayer from '../VideoPlayer';
+import TranslationBox from '../TranslationBox';
 import AboutUs from './AboutUs';
-import Footer from './Footer';
+import Footer from '../Footer';
 
 function SignToTextPage(){
 
