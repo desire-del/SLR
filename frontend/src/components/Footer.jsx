@@ -1,11 +1,20 @@
-import React from 'react';
-
-function Footer() {
-  return (
-    <footer className="footer">
-      <p>Envoyer des commentaires</p>
-    </footer>
-  );
+import React from "react";
+import "./App.css";
+import Footer from "./components/Footer.js";
+function App() {
+    return (
+        <div>
+            <div
+                style={{
+                    minHeight: "400px",
+                    color: "green",
+                }}
+            >
+                <h1>GeeksforGeeks</h1>
+            </div>
+            <Footer />
+        </div>
+    );
 }
 
-export default Footer;
+export default App;
