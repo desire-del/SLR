@@ -10,13 +10,18 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@ffmpeg/ffmpeg": "^0.12.10",
     "bootstrap": "^5.3.3",
     "frontend": "file:",
     "react": "^18.3.1",
     "react-bootstrap": "^2.10.6",
     "react-dom": "^18.3.1",
     "react-router-dom": "^7.0.1",
+<<<<<<< HEAD
     "swiper": "^11.1.15"
+=======
+    "react-webcam": "^7.2.0"
+>>>>>>> b2c6101f7ec212413f73e46924f8620505d0b565
   },
   "devDependencies": {
     "@eslint/js": "^9.13.0",
