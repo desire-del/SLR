@@ -4,8 +4,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import LanguageSelector from '../LanguageSelector';
 import VideoPlayer from '../VideoPlayer';
 import TranslationBox from '../TranslationBox';
-import AboutUs from './AboutUs';
-import Footer from '../Footer';
+
 
 function SignToTextPage(){
 
