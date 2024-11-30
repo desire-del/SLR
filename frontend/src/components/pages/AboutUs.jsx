@@ -2,26 +2,26 @@ import React from 'react';
 
 const teamMembers = [
   {
-    name: "SOUSSOU Koffi Desiré",
+    name: "Aminata Coulibaly",
     role: "Lead Developer",
     bio: "Expert en technologie de traduction du langage des signes, passionnée par l'accessibilité numérique.",
     image: "/api/placeholder/200/200"
   },
   {
-    name: "HADDIOUI Hatim",
+    name: "Mamadou Traoré",
     role: "Machine Learning Engineer",
     bio: "Spécialiste en intelligence artificielle et apprentissage automatique, concentré sur la reconnaissance des gestes.",
     image: "/api/placeholder/200/200"
   },
   {
-    name: "COULIBALY Adama",
+    name: "Sophie Martin",
     role: "UX/UI Designer",
     bio: "Designer expérimentée créant des interfaces intuitives pour rendre la technologie accessible à tous.",
     image: "/api/placeholder/200/200"
   }
 ];
 
-function AboutUsPage() {
+function AboutUs() {
   return (
     <section className="about-us">
       <h2>Notre Équipe</h2>
@@ -43,4 +43,4 @@ function AboutUsPage() {
   );
 }
 
-export default AboutUsPage;
+export default AboutUs;

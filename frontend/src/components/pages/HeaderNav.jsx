@@ -1,6 +1,6 @@
 import React from 'react';
 import { Container, Nav, Navbar, NavDropdown } from 'react-bootstrap';
-import './css/HeaderNav.css';  // Assure-toi d'avoir un fichier CSS pour les styles personnalisés
+import '../css/HeaderNav.css';  // Assure-toi d'avoir un fichier CSS pour les styles personnalisés
 
 function HeaderNav() {
   return (
