@@ -41,4 +41,21 @@
       font-size: 1rem;  /* Taille des liens réduite sur mobile */
     }
   }
+  .navbar {
+    position: absolute;
+    top: 0;
+    right: 0;
+    display: flex;
+    gap: 1rem;
+    padding: 1rem;
+  }
   
+  .navbar a {
+    color: #fff;
+    text-decoration: none;
+    transition: color 0.3s;
+  }
+  
+  .navbar a:hover {
+    color: #61dafb;
+  }

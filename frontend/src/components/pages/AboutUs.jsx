@@ -1,20 +1,21 @@
 import React from 'react';
+import '../css/AboutUs.css';
 
 const teamMembers = [
   {
-    name: "Aminata Coulibaly",
+    name: "SOUSSOU Koffi Desiré",
     role: "Lead Developer",
     bio: "Expert en technologie de traduction du langage des signes, passionnée par l'accessibilité numérique.",
     image: "/api/placeholder/200/200"
   },
   {
-    name: "Mamadou Traoré",
+    name: "HADIOUI Hatim",
     role: "Machine Learning Engineer",
     bio: "Spécialiste en intelligence artificielle et apprentissage automatique, concentré sur la reconnaissance des gestes.",
     image: "/api/placeholder/200/200"
   },
   {
-    name: "Sophie Martin",
+    name: "COULIBALY Adama",
     role: "UX/UI Designer",
     bio: "Designer expérimentée créant des interfaces intuitives pour rendre la technologie accessible à tous.",
     image: "/api/placeholder/200/200"

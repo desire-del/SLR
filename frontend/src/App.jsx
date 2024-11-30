@@ -5,6 +5,8 @@ import './App.css';
 import HeaderNav from './components/pages/HeaderNav';
 import SignToTextPage from "./components/pages/SignToTextPage"
 import AboutUs from './components/pages/AboutUs';
+import HomePage from './components/pages/HomePage';
+import Footer from './components/Footer';
 
 function App() {
   return (
@@ -15,8 +17,12 @@ function App() {
         </Route>
         <Route path="/about" element={<AboutUs />}>
         </Route>
+        <Route path="/home" element={<HomePage />}>
+        </Route>
       </Routes>
+      <Footer/>
     </BrowserRouter>
+    
   );
 }
 
